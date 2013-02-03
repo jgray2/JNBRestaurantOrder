@@ -13,7 +13,7 @@
     </head>
     <body>
         <p>Select items ordered below:</p>
-        <form>
+        <form id="form" name="form" method="POST" action="FwdControl.do">
             Entree:<br>
             <input type="checkbox" name="steak" value="Steak">12 oz. Tenderloin Steak<br>
             <input type="checkbox" name="chicken" value="Chicken">Chicken Marsala<br>
@@ -26,7 +26,7 @@
             <input type="checkbox" name="soda" value="Soda">Pepsi<br>
             <input type="checkbox" name="beer" value="Beer">Corona<br>
             <input type="checkbox" name="water" value="Water">Water<br>
-            <input id="submit1" name="Submit" type="submit" value="submit">
+            <input id="submit" name="Submit" type="submit" value="submit">
         </form>
     </body>
 </html>
