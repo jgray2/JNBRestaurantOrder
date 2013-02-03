@@ -13,6 +13,15 @@ public class Server {
     private double sideCost;
     private double drinkCost;
     private double totalOrder;
+    private final double price1 = 19.95;
+    private final double price2 = 12.95;
+    private final double price3 = 24.95;
+    private final double price4 = 18.95;
+    private final double saladPrice = 4.95;
+    private final double soupPrice = 3.95;
+    private final double sodaPrice = 1.95;
+    private final double beerPrice = 3.50;
+    private final double waterPrice = 0;
     private double tax;
     private double taxPerc = 0.051;
     private double suggestedTip;
@@ -47,41 +56,41 @@ public class Server {
 
     public final double getEntreeCost() {
         if (entree.equals("Steak")) {
-            entreeCost = 19.95;
+            entreeCost = price1;
         } else if (entree.equals("Chicken")) {
-            entreeCost = 12.95;
+            entreeCost = price2;
         } else if (entree.equals("Lobster")) {
-            entreeCost = 24.95;
+            entreeCost = price3;
         } else {
-            entreeCost = 18.95;
+            entreeCost = price4;
         }
         return entreeCost;
     }
 
     public final double getSideCost() {
         if (side.equals("Salad")) {
-            sideCost = 4.95;
+            sideCost = saladPrice;
         } else {
-            sideCost = 3.95;
+            sideCost = soupPrice;
         }
         return sideCost;
     }
 
     public final double getDrinkCost() {
         if (drink.equals("Soda")){
-            drinkCost = 1.95;
+            drinkCost = sodaPrice;
         } else if (drink.equals("Beer")) {
-            drinkCost = 3.50;
+            drinkCost = beerPrice;
         } else {
-            drinkCost = 0;
+            drinkCost = waterPrice;
         }
         return drinkCost;
     }
     
     public final void calculateOrder () {
-        totalOrder = entreeCost + sideCost + drinkCost;
+        totalOrder = getEntreeCost() + getSideCost() + getDrinkCost();
         tax = totalOrder * taxPerc;
-        totalOrder = totalOrder + tax;
+       
     }
 
     public final double getTotalOrder() {

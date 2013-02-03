@@ -15,17 +15,17 @@
         <p>Select items ordered below:</p>
         <form id="form" name="form" method="POST" action="FwdControl.do">
             Entree:<br>
-            <input type="checkbox" name="steak" value="Steak">12 oz. Tenderloin Steak<br>
-            <input type="checkbox" name="chicken" value="Chicken">Chicken Marsala<br>
-            <input type="checkbox" name="lobster" value="Lobster">Lobster Tail<br>
-            <input type="checkbox" name="shrimp" value="Shrimp">Shrimp Scampi<br><br>
+            <input type="checkbox" name="entree" value="Steak">12 oz. Tenderloin Steak<br>
+            <input type="checkbox" name="entree" value="Chicken">Chicken Marsala<br>
+            <input type="checkbox" name="entree" value="Lobster">Lobster Tail<br>
+            <input type="checkbox" name="entree" value="Shrimp">Shrimp Scampi<br><br>
             Side:<br>
-            <input type="checkbox" name="salad" value="Salad">Caeser's Salad<br>
-            <input type="checkbox" name="soup" value="Soup">Chicken Noodle Soup<br><br>
+            <input type="checkbox" name="side" value="Salad">Caeser's Salad<br>
+            <input type="checkbox" name="side" value="Soup">Chicken Noodle Soup<br><br>
             Drink:<br>
-            <input type="checkbox" name="soda" value="Soda">Pepsi<br>
-            <input type="checkbox" name="beer" value="Beer">Corona<br>
-            <input type="checkbox" name="water" value="Water">Water<br>
+            <input type="checkbox" name="drink" value="Soda">Pepsi<br>
+            <input type="checkbox" name="drink" value="Beer">Corona<br>
+            <input type="checkbox" name="drink" value="Water">Water<br>
             <input id="submit" name="Submit" type="submit" value="submit">
         </form>
     </body>

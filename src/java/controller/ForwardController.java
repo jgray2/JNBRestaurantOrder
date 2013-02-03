@@ -6,11 +6,15 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Server;
 
 /**
  *
@@ -18,7 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ForwardController", urlPatterns = {"/FwdControl.do"})
 public class ForwardController extends HttpServlet {
-
+private static final String destination = "/result.jsp";
+    
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -33,19 +38,29 @@ public class ForwardController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ForwardController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ForwardController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
-            out.close();
-        }
+        
+        Server server = new Server();
+        
+        server.setEntree(request.getParameter("entree"));
+        server.setSide(request.getParameter("side"));
+        server.setDrink(request.getParameter("drink"));
+        
+        server.calculateOrder();
+        
+        request.setAttribute("entree", server.getEntree());
+        request.setAttribute("entreeCost", String.valueOf(server.getEntreeCost()));
+        request.setAttribute("side", server.getSide());
+        request.setAttribute("sideCost", String.valueOf(server.getSideCost()));
+        request.setAttribute("drink", server.getDrink());
+        request.setAttribute("drinkCost", String.valueOf(server.getDrinkCost()));
+        request.setAttribute("totalCost", String.valueOf(server.getTotalOrder()));
+        request.setAttribute("tax", String.valueOf (server.getTax()));
+        request.setAttribute("suggestedTip", String.valueOf(server.getSuggestedTip())); 
+        
+        RequestDispatcher dispatcher =
+                getServletContext().getRequestDispatcher(destination);
+        dispatcher.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
