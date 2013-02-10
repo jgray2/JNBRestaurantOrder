@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Server;
+import model.Order;
 
 /**
  *
@@ -39,7 +39,7 @@ private static final String destination = "/result.jsp";
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        Server server = new Server();
+        Order server = new Order();
         
         server.setEntree(request.getParameter("entree"));
         server.setSide(request.getParameter("side"));

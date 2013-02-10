@@ -4,7 +4,7 @@ package model;
  *
  * @author Jenni Burgmeier
  */
-public class Server {
+public class Order {
 
     private String entree;
     private String side;
@@ -27,7 +27,7 @@ public class Server {
     private double suggestedTip;
     private double tipPerc = 0.15;
 
-    public Server() {
+    public Order() {
     }
 
     public String getEntree() {

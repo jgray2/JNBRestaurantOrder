@@ -13,7 +13,8 @@
     </head>
     <body>
         <h1>Your Order:</h1>
-        <p><% String entree = (String) request.getAttribute("entree");
+        <p>
+            <% String entree = (String) request.getAttribute("entree");
             String entreeCost = (String) request.getAttribute("entreeCost");
             String side = (String) request.getAttribute("side");
             String sideCost = (String) request.getAttribute("sideCost");
@@ -22,12 +23,14 @@
             String totalCost = (String) request.getAttribute("totalCost");
             String tax = (String) request.getAttribute("tax");
             String tip = (String) request.getAttribute("suggestedTip");
+            
             out.print("Entree: " + entree + "  $" + entreeCost);
             out.print("Side: " + side + "  $" + sideCost);
             out.print("Drink: " + drink + "  $" + drinkCost);
             out.print("Total:  $" + totalCost);
             out.print("Tax:  $" + tax);
             out.print("Suggested Tip:  $" + tip);
-            %></p>
+            %>
+        </p>
     </body>
 </html>
