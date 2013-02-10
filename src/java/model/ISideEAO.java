@@ -12,9 +12,6 @@ public interface ISideEAO {
     
     public void deleteSide(Side side);
     
-    public void addSide (Side side);
+    List<Side> findSides();
     
-    List<Order> findSides();
-    
-    public void saveSide (Side side);
 }

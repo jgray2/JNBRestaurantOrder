@@ -12,9 +12,6 @@ public interface IEntreeEAO {
     
     public void deleteEntree(Entree entree);
     
-    public void addEntree (Entree entree);
-    
-    List<Order> findEntrees();
-    
-    public void saveEntree (Entree entree);
+    List<Entree> findEntrees();
+   
 }
