@@ -15,8 +15,7 @@ public interface IOrderEAO {
     
     public void addItems (Order order);
     
-    List<Order> findItemsForOrder();
-    
-    public void saveOrder(Order order);
+    List<Order> findOrders();
+ 
     
 }
