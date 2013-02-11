@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jenni Burgmeier
  */
 @Entity
+@NamedQuery(name = "findSides", query = "SELECT s FROM Side s ORDER BY s.id DESC")
 public class Side implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

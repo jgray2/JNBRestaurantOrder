@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jenni Burgmeier
  */
 @Entity
+@NamedQuery(name = "findDrinks", query = "SELECT d FROM Drink d ORDER BY d.id DESC")
 public class Drink implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

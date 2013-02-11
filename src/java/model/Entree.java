@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
  * @author Jenni Burgmeier
  */
 @Entity
-@NamedQuery(name = "find entree", query = "Select e FROM Entree e" )
+@NamedQuery(name = "findEntrees", query = "Select e FROM Entree e" )
 public class Entree implements Serializable {
     
     @Id

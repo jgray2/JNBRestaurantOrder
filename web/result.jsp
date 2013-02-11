@@ -24,12 +24,12 @@
             String tax = (String) request.getAttribute("tax");
             String tip = (String) request.getAttribute("suggestedTip");
             
-            out.print("Entree: " + entree + "  $" + entreeCost);
-            out.print("Side: " + side + "  $" + sideCost);
-            out.print("Drink: " + drink + "  $" + drinkCost);
-            out.print("Total:  $" + totalCost);
-            out.print("Tax:  $" + tax);
-            out.print("Suggested Tip:  $" + tip);
+            out.println("Entree: " + entree + "  $" + entreeCost +"<br/>");
+            out.println("Side: " + side + "  $" + sideCost + "<br/>");
+            out.println("Drink: " + drink + "  $" + drinkCost +"<br/>");
+            out.println("Total:  $" + totalCost+ "<br/>" );
+            out.println("Tax:  $" + tax +"<br/>" );
+            out.println("Suggested Tip:  $" + tip +"<br/>");
             %>
         </p>
     </body>

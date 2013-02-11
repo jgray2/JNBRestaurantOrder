@@ -1,17 +1,29 @@
 package model;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
 /**
  *
  * @author Jenni Burgmeier
  */
-public class Order {
+@Entity
+@NamedQuery(name = "findOrders", query = "SELECT o FROM Order o ORDER BY o.id DESC")
+public class Order implements Serializable {
 
-    private String entree;
-    private String side;
-    private String drink;
-    private double entreeCost;
-    private double sideCost;
-    private double drinkCost;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = false)
+    private Drink drink;
+    private Entree entree;
+    private Side side;
     private double totalOrder;
     private final double price1 = 19.95;
     private final double price2 = 12.95;
@@ -30,81 +42,59 @@ public class Order {
     public Order() {
     }
 
-    public String getEntree() {
-        return entree;
-    }
-
-    public void setEntree(String entree) {
+    public Order(Entree entree, Drink drink, Side side) {
         this.entree = entree;
-    }
-
-    public String getSide() {
-        return side;
-    }
-
-    public void setSide(String side) {
         this.side = side;
-    }
-
-    public String getDrink() {
-        return drink;
-    }
-
-    public void setDrink(String drink) {
         this.drink = drink;
     }
 
-    public final double getEntreeCost() {
-        if (entree.equals("Steak")) {
-            entreeCost = price1;
-        } else if (entree.equals("Chicken")) {
-            entreeCost = price2;
-        } else if (entree.equals("Lobster")) {
-            entreeCost = price3;
-        } else {
-            entreeCost = price4;
-        }
-        return entreeCost;
+    public Long getId() {
+        return id;
     }
 
-    public final double getSideCost() {
-        if (side.equals("Salad")) {
-            sideCost = saladPrice;
-        } else {
-            sideCost = soupPrice;
-        }
-        return sideCost;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public final double getDrinkCost() {
-        if (drink.equals("Soda")){
-            drinkCost = sodaPrice;
-        } else if (drink.equals("Beer")) {
-            drinkCost = beerPrice;
-        } else {
-            drinkCost = waterPrice;
-        }
-        return drinkCost;
+    public Drink getDrink() {
+        return drink;
     }
-    
-    public final void calculateOrder () {
-        totalOrder = getEntreeCost() + getSideCost() + getDrinkCost();
+
+    public void setDrink(Drink drink) {
+        this.drink = drink;
+    }
+
+    public Entree getEntree() {
+        return entree;
+    }
+
+    public void setEntree(Entree entree) {
+        this.entree = entree;
+    }
+
+    public Side getSide() {
+        return side;
+    }
+
+    public void setSide(Side side) {
+        this.side = side;
+    }
+
+    public final void calculateOrder() {
+        totalOrder = entree.getPrice() + side.getPrice() + drink.getPrice();
         tax = totalOrder * taxPerc;
-       
     }
 
-    public final double getTotalOrder() {
+    public double getTotalOrder() {
         return totalOrder;
     }
 
-    public final double getTax() {
+    public double getTax() {
         return tax;
     }
 
-    public final double getSuggestedTip() {
+    public double getSuggestedTip() {
         suggestedTip = totalOrder * tipPerc;
         return suggestedTip;
     }
-    
-    
 }
