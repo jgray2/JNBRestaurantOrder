@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
  * @author Jenni Burgmeier
  */
 @Entity
-@NamedQuery(name = "findDrinks", query = "SELECT d FROM Drink d ORDER BY d.id DESC")
+@NamedQuery(name = "findDrinks", query = "SELECT d FROM Drink d")
 public class Drink implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

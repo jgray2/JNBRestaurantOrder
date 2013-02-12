@@ -14,8 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Order;
-import model.OrderService;
+import model.Server;
 
 /**
  *
@@ -35,29 +34,35 @@ private static final String destination = "/result.jsp";
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, 
+            HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        OrderService order = new OrderService();
+        Server server = new Server();
         
-//        server.setEntree(request.getParameter("entree"));
-//        server.setSide(request.getParameter("side"));
-//        server.setDrink(request.getParameter("drink"));
-//        
-//        server.calculateOrder();
-//        
-//        request.setAttribute("entree", server.getEntree());
-//        request.setAttribute("entreeCost", String.valueOf(server.getEntreeCost()));
-//        request.setAttribute("side", server.getSide());
-//        request.setAttribute("sideCost", String.valueOf(server.getSideCost()));
-//        request.setAttribute("drink", server.getDrink());
-//        request.setAttribute("drinkCost", String.valueOf(server.getDrinkCost()));
-//        request.setAttribute("totalCost", String.valueOf(server.getTotalOrder()));
-//        request.setAttribute("tax", String.valueOf (server.getTax()));
-//        request.setAttribute("suggestedTip", String.valueOf(server.getSuggestedTip())); 
+        server.setEntree(request.getParameter("entree"));
+        server.setSide(request.getParameter("side"));
+        server.setDrink(request.getParameter("drink"));
         
+        server.calculateOrder();
+        
+        request.setAttribute("entree", server.getEntree());
+        request.setAttribute("entreeCost", 
+                String.valueOf(server.getEntreeCost()));
+        request.setAttribute("side", server.getSide());
+        request.setAttribute("sideCost", 
+                String.valueOf(server.getSideCost()));
+        request.setAttribute("drink", server.getDrink());
+        request.setAttribute("drinkCost", 
+                String.valueOf(server.getDrinkCost()));
+        request.setAttribute("totalCost", 
+                String.valueOf(server.getTotalOrder()));
+        request.setAttribute("tax", String.valueOf (server.getTax()));
+        request.setAttribute("suggestedTip", 
+                String.valueOf(server.getSuggestedTip())); 
+//        
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(destination);
         dispatcher.forward(request, response);
